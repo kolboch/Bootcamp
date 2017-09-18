@@ -5,7 +5,22 @@ package com.kb.example.loginsample
  */
 class MainPresenter(private val view: MainView) {
 
-    fun logIn(user: User) {
+    val loginUser: LoginUser = LoginUser()
+
+    fun logIn(credentials: Credentials) {
+        view.showAuthenticatingView()
+        loginUser.logInUser(credentials, {
+            when (it) {
+                true -> {
+                    view.showSuccessfulLoginToast()
+                    view.hideAuthenticatingView()
+                }
+                false -> {
+                    view.showAuthenticationFailed()
+                    view.hideAuthenticatingView()
+                }
+            }
+        })
     }
 
     fun inputDataChanged(login: String, password: String) {

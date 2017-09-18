@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), MainView {
         loginButton.setOnClickListener {
             val login: String = loginEditText.text.toString()
             val password: String = passwordEditText.text.toString()
-            presenter?.logIn(User(login, password))
+            presenter?.logIn(Credentials(login, password))
         }
         loginEditText.addTextChangedListener(getTextChangedListener())
         passwordEditText.addTextChangedListener(getTextChangedListener())
@@ -36,19 +36,27 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun showAuthenticatingView() {
-        loadingView.visibility = View.VISIBLE
+        runOnUiThread {
+            loadingView.visibility = View.VISIBLE
+        }
     }
 
     override fun hideAuthenticatingView() {
-        loadingView.visibility = View.GONE
+        runOnUiThread {
+            loadingView.visibility = View.GONE
+        }
     }
 
     override fun showSuccessfulLoginToast() {
-        toast(R.string.successful_authentication)
+        runOnUiThread {
+            toast(R.string.successful_authentication)
+        }
     }
 
     override fun showAuthenticationFailed() {
-        toast(R.string.failed_authentication)
+        runOnUiThread {
+            toast(R.string.failed_authentication)
+        }
     }
 
     override fun enableLogInButton() {
