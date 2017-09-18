@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoginSample</string>
+    
+    <string name="log_in">Log in</string>
+    <string name="login_too_short">Login too short, min 3 characters!</string>
+    <string name="login_no_spaces">Login can\'t contain spaces!</string>
+    <string name="login_no_numbers">Login can\'t contain numbers!</string>
+    <string name="password_too_short">Password min 6 characters!</string>
+    <string name="password_must_have_number">Password must have at least one number!</string>
+    <string name="password_must_have_capital">Password must have at least one capital letter!</string>
+
+</resources>
